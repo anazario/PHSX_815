@@ -31,19 +31,17 @@ def RK4O(r,h):
     c=1/6.0
     
     res = list(r)
+    r_size = len(res)
 
     for t in range(N):
 
         k1 = [h*i for i in f(res)]
-        k2 = [h*i for i in f([res[j]+0.5*k1[j] for j in range(len(res))])]
-        k3 = [h*i for i in f([res[j]+0.5*k2[j] for j in range(len(res))])]
-        k4 = [h*i for i in f([res[j]+k3[j] for j in range(len(res))])]
+        k2 = [h*i for i in f([res[j]+0.5*k1[j] for j in range(r_size)])]
+        k3 = [h*i for i in f([res[j]+0.5*k2[j] for j in range(r_size)])]
+        k4 = [h*i for i in f([res[j]+k3[j] for j in range(r_size)])]
     
-        for i in range(len(res)):
+        for i in range(r_size):
             res[i] += (k1[i]+2*k2[i]+2*k3[i]+k4[i])*c
-
-    error = (h)**4 + (1e-16*N)
-    print ("RK4 error: "+ str(error))
 
     return(res)
 
