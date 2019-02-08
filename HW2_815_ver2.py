@@ -1,3 +1,7 @@
+#Author: Andres Abreu 
+#Date: 2/8/2019
+#Homework #2 PSHX 815 
+
 #libraries for analytical solution
 from math import sin,cos
 
@@ -70,6 +74,7 @@ ana_sol = [sin(w*1),w*cos(w*1)]
 error_RK4 = []
 error_Euler = []
 
+#loop over the different step sizes h
 for h in step_size:
     
     val1 = RK4O(r,h)
@@ -87,6 +92,7 @@ for h in step_size:
 t_0 = 0
 t_f = 1
 
+#make list of 1/h
 total_steps = [(t_f - t_0)/h for h in step_size]
 
 f = plt.figure()
